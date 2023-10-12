@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+<div class="jumbotron text-center" style="background: none; padding-bottom: 1rem; padding-top: 4rem;">
+    <h1>ApproLoan</h1>
+    <p>Please fill in the details below to predict if you can get a Loan Approval</p>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <form action='/predict' method="post">
+                <div class="form-group">
+                    <label for="credit_history"><b>Credit History</b></label>
+                    <input type="text" class="form-control" id="credit_history" name="CreditHistory" placeholder="1 for yes 0 for none ">
+                </div>
+                <div class="form-group">
+                    <label for="property_area"><b>Property(ies) Owned</b></label>
+                    <input type="text" class="form-control" id="property_area" name="PropertyArea" placeholder="0 or 1 or more">
+                </div>
+                <div class="form-group">
+                    <label for="gender"><b>Gender</b></label>
+                    <input type="text" class="form-control" id="gender" name="Gender" placeholder="1 for Male, 0 for Female">
+                </div>
+                <div class="form-group">
+                    <label for="marital_status"><b>Marital Status</b></label>
+                    <input type="text" class="form-control" id="marital_status" name="MaritalStatus" placeholder="1 for Married, 0 for Single">
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-info btn-lg">Predict</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container text-center mt-4">
+    <h1 class="alert alert-info" role="alert">{{pred}}</h1>
+	<h4 class="alert">{{prob}}</h4>
+</div>
+</body>
+</html>
